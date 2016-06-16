@@ -1,0 +1,21 @@
+Two neural net approches. Both nets are exactly the same:
+
+    3 hidden layers a 30 neurons
+    2 inputs neurons, one output neuron
+    All activations are sigmoid
+    Stochastic Gradient descent algorithm as learning algorithm with eta=3.0
+    quadratic cost function : cost_function = tf.scalar_mul(1.0/(N_training_set*2.0),tf.reduce_sum(tf.squared_difference(y,y_)))
+    batch_size of 10
+    weight initialization: The weights which connect the lth and l+1th layer are initialized with sigma=1/sqrt(N_l), where N_l is the number of neurons in the lth layer.
+
+The data is saved in TH2D_A00_TB10.root.
+
+you can run the nets as follows:
+tensorflow: python regression.py
+Michael_Nielsen: python start2.py
+
+Some more details:
+- before the training phase the inputs and outputs are normalized with the largest value in the whole set. This is necessary because 
+  one uses sigmoid neurons.
+- After the each training phase the net is tested with the test/validation data set.
+- each net prints the total error on the test set after the last training epoch. In the tensorflowcase this is O(1 million) in the Michael Nielsen case this is O(100k).
